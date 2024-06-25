@@ -5,7 +5,7 @@ import { Button, Navbar, Container, Nav } from 'react-bootstrap';
 
 function App() {
 
-  let [char] =useState(data)
+  let [char] = useState(data)
 
   return (
     <div className="App">
@@ -22,36 +22,35 @@ function App() {
 
       <div className='main-bg'></div>
 
-      <div className="container">
+      <div className='container'>
         <div className='row'>
-          <div className='col-md-4'>
-            <img src="https://www.gimhae.go.kr/_res/portal/img/sub/05/p01047_img8.png" width="80%"/>
-            <h4>{ char[0].title }</h4>
-            <p>{ char[0].price }</p>
-          </div>
-          <div className='col-md-4'>
-            <img src="https://cdn.idomin.com/news/photo/202108/769634_452493_1211.jpg" width="80%"/>
-            <h4>{ char[1].title }</h4>
-            <p>{ char[1].price }</p>
-            </div>
-          <div className='col-md-4'>
-            <img src="https://localsegye.co.kr/news/data/20230327/p1065569913862265_165_thum.jpg" width="80%"/>
-            <h4>{ char[2].title }</h4>
-            <p>{ char[2].price }</p>
-            </div>
+          {/* <Card char={char[0]}></Card>
+          <Card char={char[1]}></Card>
+          <Card char={char[2]}></Card> */}
+          {
+            char.map((a, i) => {
+              return (
+                <Card char={char[i]}></Card>
+              )
+            })
+          }
         </div>
       </div>
+
 
     </div>
   );
 }
 
-function Row(props) {
+function Card(props) {
   return (
-    <div className='row'>
-      <h4>{props.char}</h4>
+    <div className='col-md-4'>
+      <img src={props.char.img} width="80%" />
+      <h4>{props.char.title}</h4>
+      <p>{props.char.content}</p>
     </div>
   )
 }
+
 
 export default App;
